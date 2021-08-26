@@ -1,16 +1,17 @@
 import tabDay from './utilitaire/gestionTemps.js';
 
+
 // console.log(tabDay);
 const apiKey = 'af3455bd56d9f8de201809a1599f9dda';
 
 let resultatAPI;
+
 
 /**je viens cibler les champs(class) qui vont permet d'afficher les données retournées par l 'api */
 const temps = document.querySelector('.temps');
 const temperature = document.querySelector('.temperature');
 const localisation = document.querySelector('.localisation');
 const wind = document.querySelector('.wind');
-
 const hour = document.querySelectorAll('.heure-nom-prevision');
 const hourPreview = document.querySelectorAll('.heure-prevision-valeur');
 const dayDiv = document.querySelectorAll('.jour-prevision-nom');
@@ -48,8 +49,6 @@ function CallApi(long, lat) {
     /*fetch appel sur api par longitude et latitude*/
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely&units=metric&lang=fr&appid=${apiKey}`)
 
-        /*fetch appel sur api par ville*/
-        // fetch(`https://api.openweathermap.org/data/2.5/weather?&units=metric&lang=fr&q=${city}&appid=${apiKey}`)
 
         .then((response) => {
             return response.json();
@@ -57,6 +56,7 @@ function CallApi(long, lat) {
         .then((data) => {
             console.log("les datas", data);
             resultatAPI = data;
+
 
             temps.innerText = resultatAPI.current.weather[0].description;
             temperature.innerText = `${Math.round(resultatAPI.current.temp)}°`;
@@ -87,11 +87,11 @@ function CallApi(long, lat) {
                 dayDiv[d].innerText = tabDay[d].slice(0, 3)
             }
 
-            for (let t = 0; t < 7; t++){
+            for (let t = 0; t < 7; t++) {
                 tempsDiv[t].innerText = `${Math.round(resultatAPI.daily[t + 1].temp.day)}°`
             }
 
-            if(hourActually >= 6 && hourActually < 21) {
+            if (hourActually >= 6 && hourActually < 21) {
                 icon.src = `ressources/jour/${resultatAPI.current.weather[0].icon}.svg`
             }
             else {
@@ -102,4 +102,31 @@ function CallApi(long, lat) {
 
         })
 
-}
+};
+
+let callCity = function (city) {
+    /**On fait appel a l'API seulement pour la ville recherché */
+    /*fetch appel sur api par ville*/
+    fetch(`https://api.openweathermap.org/data/2.5/weather?&units=metric&lang=fr&q=${city}&appid=${apiKey}`)
+        // fetch(`https://api.openweathermap.org/data/2.5/weather?&units=metric&lang=fr&q=lyon&appid=${apiKey}`)
+
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log("les datas2", data);
+
+
+            document.querySelector('.ChoiceCity').innerHTML = data.name;
+            document.querySelector('.tempCity').innerHTML = data.main.temp + '°';
+            document.querySelector('.ciel').innerHTML = data.weather[0].description;
+
+        })
+
+};
+document.querySelector('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    let ville = document.querySelector('.choiceCity').value;
+    callCity(ville)
+});
+console.log("je suis dans la focntion");

@@ -9,4 +9,5 @@
 - mettre en place d'une météo sur 7 jours,
 
 ### 3. Mise ne place d'un input pour trouver la météo d'une ville en particulier
-- en cours de création,
+- Mise en place pour rechercher une ville plus précise.
+

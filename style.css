@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
 
 body {
@@ -11,7 +12,7 @@ body {
 
   background: #424242;
   height: auto;
-  /* min-width: 100vh; */
+  width: auto;
 }
 
 .container {
@@ -25,7 +26,7 @@ body {
   grid-template: 100px 100px 300px 100px 100px / repeat(8, 100px);
   margin: 100px auto 0;
   position: relative;
-  border: 1px solid yellow;
+  border: 1px solid rgb(128, 19, 230);
 }
 
 h1 {
@@ -37,13 +38,30 @@ h1 {
   align-items: center;
   border-bottom: 1px solid black;
 }
-/* h2, form{
+h2, form{
   grid-area: 2 / 1 / 2 / -1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  
-} */
+  }
+.bloc-info2{
+  padding-left: 25px;
+  width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.bloc-info2 .tempCity{
+  font-size: 20px;
+  font-style: normal;
+}
+
+.bloc-info2 .ciel::first-letter{
+  text-transform: capitalize;
+}
+
+
 
 .bloc-logo-info {
   grid-area: 3 / 1 / 3 / -1;
@@ -120,7 +138,7 @@ h1 {
 
 /* Animation au chargement */
 .overlay-icone-chargement {
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
   height: 100%;
   background: linear-gradient(45deg, rgb(59,50,50), rgb(22,28,29));
