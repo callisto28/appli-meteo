@@ -8,18 +8,24 @@
     <title>meteo</title>
   </head>
   <body>
-    <div class="container">
-      <div class="overlay-icone-chargement">
+    <div id="contain" class="container">
+      <!-- <div class="overlay-icone-chargement">
         <img src="ressources/chargement/circles.svg" alt="logo chargement" />
-      </div>
+      </div> -->
       <h1 class="title">Météo de votre ville</h1>
 
       <form>
         <h2 class="choix">Vous pouvez aussi choisir une autre ville :</h2>
+
+      
+
+        <span id='time' style="background-color:#1C1C1C;color:silver;font-size:20px;"></span>
+       
         <div class="choice">
           <input type="text" class="choiceCity" />
         </div>
         <button type="submit" class="choiceSubmit">Search</button>
+        <!-- <img class="img" src="" alt="jour/nuit" style="width: 100%" /> -->
         <div class="bloc-info2">
           <p class="ChoiceCity"></p>
           <p class="tempCity"></p>
@@ -101,5 +107,6 @@
     </div>
 
     <script type="module" src="./scripts/main.js"></script>
+    <script src="./scripts/utilitaire/temp.js"></script>
   </body>
 </html>

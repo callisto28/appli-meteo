@@ -7,19 +7,18 @@
   
 }
 
+
 body {
   font-family: Arial, Helvetica, sans-serif;
-
   background: #424242;
   height: auto;
   width: auto;
 }
 
+
 .container {
   width: 800px;
   height: 700px;
-
-  background: linear-gradient(65deg, #ffffff, #6dd5fa, #2980b9);
   /* on definit une grille avec le grid pour placer les elements */
   display: grid;
   /* on vient donc faire 4 rangées  puis apres avec / on vient faire repeter 8x les colones */
@@ -27,6 +26,18 @@ body {
   margin: 100px auto 0;
   position: relative;
   border: 1px solid rgb(128, 19, 230);
+}
+.jour{
+  background:url(./ressources/wallpaper/soleil.jpg) no-repeat ;
+  background-size: cover;
+  background-position: center;
+}
+
+.nuit{
+  color: white;
+  background: url(./ressources/wallpaper/nuit.jpg) no-repeat;
+  background-size: cover;
+  background-position: revert;
 }
 
 h1 {
@@ -45,6 +56,7 @@ h2, form{
   justify-content: space-between;
   align-items: center;
   }
+
 .bloc-info2{
   padding-left: 25px;
   width: 50%;
@@ -52,12 +64,12 @@ h2, form{
   display: flex;
   justify-content: space-between;
 }
-.bloc-info2 .tempCity{
+.bloc-info2, .tempCity{
   font-size: 20px;
   font-style: normal;
 }
 
-.bloc-info2 .ciel::first-letter{
+.bloc-info2, .ciel::first-letter{
   text-transform: capitalize;
 }
 

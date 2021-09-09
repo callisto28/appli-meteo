@@ -18,6 +18,9 @@ const dayDiv = document.querySelectorAll('.jour-prevision-nom');
 const tempsDiv = document.querySelectorAll('.jour-prevision-temps');
 const icon = document.querySelector('.logo-image');
 const chargementContainer = document.querySelector('.overlay-icone-chargement');
+const wall = document.querySelector('.img');
+
+
 
 
 /**On va créer uen condition si le navigateur a bien une geolocalisation
@@ -71,6 +74,7 @@ function CallApi(long, lat) {
                 let hourFor = hourActually + i * 3;
                 if (hourFor > 24) {
                     hour[i].innerText = `${hourFor - 24} h`;
+
                 } else if (hourFor === 24) {
                     hour[i].innerText = "00 h";
                 } else {
@@ -91,16 +95,35 @@ function CallApi(long, lat) {
                 tempsDiv[t].innerText = `${Math.round(resultatAPI.daily[t + 1].temp.day)}°`
             }
 
-            if (hourActually >= 6 && hourActually < 21) {
+            if (hourActually >= 6 && hourActually < 21 ) {
                 icon.src = `ressources/jour/${resultatAPI.current.weather[0].icon}.svg`
+                document.getElementById('contain').classList.add( 'jour');
+                document.getElementById('contain').classList.remove('nuit');
+                // wall.src = 'ressources/wallpaper/soleil.jpg';
             }
             else {
                 icon.src = `ressources/nuit/${resultatAPI.current.weather[0].icon}.svg`
+                document.getElementById('contain').classList.add( 'nuit');
+                document.getElementById('contain').classList.remove('jour');
+                // wall.src = 'ressources/wallpaper/nuit.jpg';
             }
 
-            chargementContainer.classList.add('disparition');
+            // let indice = resultatAPI.current.temp
+
+            // if (indice >= 15 || indice <= 50) {
+            //     console.log("temp", indice);
+
+            //     wall.src = 'ressources/wallpaper/soleil.jpg';
+            // } else {
+            //     console.log("temp nuit",);
+            //     wall.src = 'ressources/wallpaper/nuit.jpg';
+            // }
+
+            // chargementContainer.classList.add('disparition');
 
         })
+
+
 
 };
 
@@ -123,10 +146,54 @@ let callCity = function (city) {
 
         })
 
+   
+
 };
 document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
     let ville = document.querySelector('.choiceCity').value;
     callCity(ville)
 });
-console.log("je suis dans la focntion");
+ 
+
+// (function () {
+//     function checkTime(i) {
+//         console.log("check1");
+//         return (i < 10) ? "0" + i : i;
+
+//     }
+
+//     function startTime() {
+//         console.log("check2");
+//         let today = new Date(),
+//             h = checkTime(today.getHours()),
+//             m = checkTime(today.getMinutes()),
+//             s = checkTime(today.getSeconds());
+//         document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+//         window.onload = function() {
+            
+//             setInterval("checkTime()", 500);
+//             };
+//     }
+//     startTime();
+// })();
+
+// function refresh(){
+//     let t = 1000; // rafraîchissement en millisecondes
+//     setTimeout('showDate()',t)
+// }
+
+// function showDate() {
+//     let date = new Date()
+//     let h = date.getHours();
+//     let m = date.getMinutes();
+//     let s = date.getSeconds();
+//     if( h < 10 ){ h = '0' + h; }
+//     if( m < 10 ){ m = '0' + m; }
+//     if( s < 10 ){ s = '0' + s; }
+//     let time = h + ':' + m + ':' + s
+//     document.getElementById('horloge').innerHTML = time;
+//     refresh();
+//  }
+//  showDate()
+
