@@ -12,7 +12,9 @@ function showDate() {
     if( m < 10 ){ m = '0' + m; }
     if( s < 10 ){ s = '0' + s; }
     let time = h + ':' + m + ':' + s
-    document.getElementById('time').innerHTML = time;
+    document.getElementById('time').textContent = time;
     refresh();
  }
  showDate()
+
+
