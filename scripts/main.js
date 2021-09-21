@@ -99,16 +99,18 @@ function CallApi(long, lat) {
             }
 
             if (hourActually >= 6 && hourActually < 21) {
+                if(esultatAPI.current.weather[0].icon.includes('d')){
                 icon.src = `ressources/jour/${resultatAPI.current.weather[0].icon}.svg`
-                // document.getElementById('myModal').classList.add( 'jour');
-                // document.getElementById('myModal').classList.remove('nuit');
+               
+                document.getElementById('myModal').classList.add( 'jour');
+                document.getElementById('myModal').classList.remove('nuit');
                 document.getElementById('contain').classList.add('meteo');
-
+                }
             }
             else {
                 icon.src = `ressources/nuit/${resultatAPI.current.weather[0].icon}.svg`
-                // document.getElementById('myModal').classList.add( 'nuit');
-                // document.getElementById('myModal').classList.remove('jour');
+                document.getElementById('myModal').classList.add( 'nuit');
+                document.getElementById('myModal').classList.remove('jour');
                 document.getElementById('contain').classList.add('meteo');
             }
 
@@ -155,7 +157,7 @@ let callCity = function (city) {
 };
 document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
-    let ville = document.querySelector('.choiceCity').value || null;
+    let ville = document.querySelector('.choiceCity').value || 'Paris';
     callCity(ville);
 });
 

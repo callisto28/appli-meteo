@@ -135,9 +135,11 @@ form {
 }
 
 .heure-bloc-prevision {
+  color: rgb(83, 84, 90);
   grid-area: 4 /1 / 4 / -1;
 }
 .jour-prevision-bloc {
+  color: rgb(68, 102, 99);
   grid-area: 5 /1 / 5 / -1;
 }
 /* ici nous alloons venir créer 7 divisions de bloc */
