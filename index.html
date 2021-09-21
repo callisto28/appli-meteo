@@ -23,15 +23,25 @@
         <div class="choice">
           <input type="text" class="choiceCity" placeholder="Saisir une ville" />
         </div>
-        <button type="submit" class="choiceSubmit" value="click" >Search</button>
        
-        <div class="bloc-info2">
-          <p class="ChoiceCity"></p>
-          <p class="tempCity"></p>
-          <p class="ciel"></p>
+
+        <button id="myBtn" class="choiceSubmit" value="click">Chercher une ville</button>
+
+    <div id="myModal" class="modal fade">
+
+        <div class="modal-content">
+          <span class="close" style="color: crimson;">&times;</span>
+            <div class="bloc-info3">
+              <p class="ChoiceCity"></p>
+              <p class="tempCity"></p>
+              <p class="ciel"></p> 
+   
+            </div>
+            <img src="" alt="logo du temps" class="logo-image1" />
         </div>
 
-        
+    </div>
+
       </form>
 
       <div class="bloc-logo-info">
@@ -109,5 +119,15 @@
 
     <script type="module" src="./scripts/main.js"></script>
     <script src="./scripts/utilitaire/temp.js"></script>
+     <script src="./scripts/utilitaire/modal.js"></script>
+   
+
+
+
+
+
+
+  </body>
+   
   </body>
 </html>

@@ -1,7 +1,7 @@
 import tabDay from './utilitaire/gestionTemps.js';
 
 
-// console.log(tabDay);
+
 const apiKey = 'af3455bd56d9f8de201809a1599f9dda';
 
 let resultatAPI;
@@ -17,6 +17,7 @@ const hourPreview = document.querySelectorAll('.heure-prevision-valeur');
 const dayDiv = document.querySelectorAll('.jour-prevision-nom');
 const tempsDiv = document.querySelectorAll('.jour-prevision-temps');
 const icon = document.querySelector('.logo-image');
+const icon1 = document.querySelector('.logo-image1');
 const chargementContainer = document.querySelector('.overlay-icone-chargement');
 const wall = document.querySelector('.img');
 
@@ -57,8 +58,9 @@ function CallApi(long, lat) {
             return response.json();
         })
         .then((data) => {
-            // console.log("les datas", data);
+            console.log("les datas", data);
             resultatAPI = data;
+            console.log('api1', resultatAPI);
 
 
             temps.textContent = resultatAPI.current.weather[0].description;
@@ -84,7 +86,7 @@ function CallApi(long, lat) {
             //température toute les 3h
             for (let j = 0; j < hourPreview.length; j++) {
                 hourPreview[j].textContent = `${Math.round(resultatAPI.hourly[j * 3].temp)}°`
-               
+
             }
 
             //Jour avec les 3 premières lettres
@@ -96,58 +98,73 @@ function CallApi(long, lat) {
                 tempsDiv[t].textContent = `${Math.round(resultatAPI.daily[t + 1].temp.day)}°`
             }
 
-            if (hourActually >= 6 && hourActually < 21 ) {
+            if (hourActually >= 6 && hourActually < 21) {
                 icon.src = `ressources/jour/${resultatAPI.current.weather[0].icon}.svg`
-                document.getElementById('contain').classList.add( 'jour');
-                document.getElementById('contain').classList.remove('nuit');
-                
+                // document.getElementById('myModal').classList.add( 'jour');
+                // document.getElementById('myModal').classList.remove('nuit');
+                document.getElementById('contain').classList.add('meteo');
+
             }
             else {
                 icon.src = `ressources/nuit/${resultatAPI.current.weather[0].icon}.svg`
-                document.getElementById('contain').classList.add( 'nuit');
-                document.getElementById('contain').classList.remove('jour');
-                
+                // document.getElementById('myModal').classList.add( 'nuit');
+                // document.getElementById('myModal').classList.remove('jour');
+                document.getElementById('contain').classList.add('meteo');
             }
 
-          
-
         })
-
-
-
+      
 };
+
+
+
+
+
+
+
 
 let callCity = function (city) {
     /**On fait appel a l'API seulement pour la ville recherché */
     /*fetch appel sur api par ville*/
     fetch(`https://api.openweathermap.org/data/2.5/weather?&units=metric&lang=fr&q=${city}&appid=${apiKey}`)
-       
+
 
         .then((response) => {
             return response.json();
         })
-        .then((data) => {
-            // console.log("les datas2", data);
+        .then((data2) => {
+            console.log(data2, 'data2');
 
+            if (data2.weather[0].icon.includes('d')) {
+                console.log("le data",data2.weather[0].icon.includes('d'));
+                icon1.src = `ressources/ressource2/jour1/${data2.weather[0].icon}.png`
+                console.log('il fait jour');
+            }
+            else {
+                icon1.src = `ressources/ressource2/nuit1/${data2.weather[0].icon}.png`
+                console.log('il fait nuit');
+            }
 
-            document.querySelector('.ChoiceCity').textContent = data.name;
-            document.querySelector('.tempCity').textContent = data.main.temp + '°';
-            document.querySelector('.ciel').textContent = data.weather[0].description;
+            document.querySelector('.ChoiceCity').textContent = data2.name;
+            document.querySelector('.tempCity').textContent = `${Math.round(data2.main.temp)}°`;
+            document.querySelector('.ciel').textContent = data2.weather[0].description;
 
         })
         
 
-
-
-        
 };
 document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
-    let ville = document.querySelector('.choiceCity').value;
-   
-    callCity(ville)
+    let ville = document.querySelector('.choiceCity').value || null;
+    callCity(ville);
 });
- 
+
+
+
+
+
+
+
 
 
 

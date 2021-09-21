@@ -1,0 +1,22 @@
+{
+  "name": "meteo",
+  "version": "1.0.0",
+  "description": "### 1. Mise en place de l'api openweather - récupération d'un coordonées latitude et longitude pour cibler la ville grace à la localilsation, - récupération des information désirées (température, force du vent),",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callisto28/appli-meteo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/callisto28/appli-meteo/issues"
+  },
+  "homepage": "https://github.com/callisto28/appli-meteo#readme",
+  "dependencies": {
+    "date-fns": "^2.24.0"
+  }
+}
