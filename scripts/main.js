@@ -98,19 +98,19 @@ function CallApi(long, lat) {
                 tempsDiv[t].textContent = `${Math.round(resultatAPI.daily[t + 1].temp.day)}°`
             }
 
-            if (hourActually >= 6 && hourActually < 21) {
-                if(esultatAPI.current.weather[0].icon.includes('d')){
+            // if (hourActually >= 6 && hourActually < 21) {
+                if(resultatAPI.current.weather[0].icon.includes('d')){
                 icon.src = `ressources/jour/${resultatAPI.current.weather[0].icon}.svg`
                
-                document.getElementById('myModal').classList.add( 'jour');
-                document.getElementById('myModal').classList.remove('nuit');
+                // document.getElementById('myModal').classList.add( 'jour');
+                // document.getElementById('myModal').classList.remove('nuit');
                 document.getElementById('contain').classList.add('meteo');
-                }
+                // }
             }
             else {
                 icon.src = `ressources/nuit/${resultatAPI.current.weather[0].icon}.svg`
-                document.getElementById('myModal').classList.add( 'nuit');
-                document.getElementById('myModal').classList.remove('jour');
+                // document.getElementById('myModal').classList.add( 'nuit');
+                // document.getElementById('myModal').classList.remove('jour');
                 document.getElementById('contain').classList.add('meteo');
             }
 
