@@ -99,9 +99,9 @@ function CallApi(long, lat) {
             }
 
             // if (hourActually >= 6 && hourActually < 21) {
-                if(resultatAPI.current.weather[0].icon.includes('d')){
+            if (resultatAPI.current.weather[0].icon.includes('d')) {
                 icon.src = `ressources/jour/${resultatAPI.current.weather[0].icon}.svg`
-               
+
                 // document.getElementById('myModal').classList.add( 'jour');
                 // document.getElementById('myModal').classList.remove('nuit');
                 document.getElementById('contain').classList.add('meteo');
@@ -115,7 +115,7 @@ function CallApi(long, lat) {
             }
 
         })
-      
+
 };
 
 
@@ -138,7 +138,7 @@ let callCity = function (city) {
             console.log(data2, 'data2');
 
             if (data2.weather[0].icon.includes('d')) {
-                console.log("le data",data2.weather[0].icon.includes('d'));
+                console.log("le data", data2.weather[0].icon.includes('d'));
                 icon1.src = `ressources/ressource2/jour1/${data2.weather[0].icon}.png`
                 console.log('il fait jour');
             }
@@ -151,8 +151,21 @@ let callCity = function (city) {
             document.querySelector('.tempCity').textContent = `${Math.round(data2.main.temp)}°`;
             document.querySelector('.ciel').textContent = data2.weather[0].description;
 
+            let date = new Date()
+            let h = date.getHours();
+            let m = date.getMinutes();
+            let s = date.getSeconds();
+            if( h < 10 ){ h = '0' + h; }
+            if( m < 10 ){ m = '0' + m; }
+            if( s < 10 ){ s = '0' + s; }
+            let times =  data2.timezone / 3600 -2;
+            console.log('times', times);
+            let time2 = `${h + times}:${m}:${s}`;
+            console.log('time2', time2);
+            document.querySelector('.hours').textContent = time2;
+
         })
-        
+
 
 };
 document.querySelector('form').addEventListener('submit', function (e) {

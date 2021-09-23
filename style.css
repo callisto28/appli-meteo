@@ -222,7 +222,7 @@ button {
   margin: 13% auto;
   border: 1px solid rgb(233, 23, 23);
   width: 30%;
-  height: 450px;
+  height: 65%;
 }
 
 
@@ -315,6 +315,15 @@ button {
     align-items: center;
     justify-content: space-between;
   }
+  .logo-image {
+    display: fixed;
+    position: fixed;
+    top: 35%;
+    right: 50%; 
+    width: 50%;
+    height: 40%;
+    object-fit: cover;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -354,5 +363,11 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .logo-image {
+    width: 60%;
+    height: 60%;
+    object-fit: cover;
   }
 }
