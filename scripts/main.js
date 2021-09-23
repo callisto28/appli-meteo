@@ -147,30 +147,36 @@ let callCity = function (city) {
                 console.log('il fait nuit');
             }
 
-            document.querySelector('.ChoiceCity').textContent = data2.name;
-            document.querySelector('.tempCity').textContent = `${Math.round(data2.main.temp)}°`;
-            document.querySelector('.ciel').textContent = data2.weather[0].description;
+            document.querySelector('.ChoiceCity').textContent = `Ville : ${data2.name}`;
+            document.querySelector('.tempCities').textContent = `Température : ${Math.round(data2.main.temp)}° - Ressentie : ${Math.round(data2.main.feels_like)}°`;
+            document.querySelector('.ciel').textContent = `Tendance : ${data2.weather[0].description}`;
+            document.querySelector('.pays').textContent = `Pays : ${data2.sys.country}`;
 
             let date = new Date()
             let h = date.getHours();
             let m = date.getMinutes();
             let s = date.getSeconds();
-            if( h < 10 ){ h = '0' + h; }
-            if( m < 10 ){ m = '0' + m; }
-            if( s < 10 ){ s = '0' + s; }
-            let times =  data2.timezone / 3600 -2;
-            console.log('times', times);
+            if (h < 10) { h = '0' + h; }
+            if (m < 10) { m = '0' + m; }
+            if (s < 10) { s = '0' + s; }
+            let times = data2.timezone / 3600 - 2;
             let time2 = `${h + times}:${m}:${s}`;
             console.log('time2', time2);
-            document.querySelector('.hours').textContent = time2;
 
+            document.querySelector('.hours').textContent = `Heure locale : ${time2}`;
+         
         })
 
 
 };
+
 document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
     let ville = document.querySelector('.choiceCity').value || 'Paris';
+       // if(ville != `${data2.name}`){{
+            //     return alert('Veuillez entrer une ville valide');
+            // }}
+    
     callCity(ville);
 });
 

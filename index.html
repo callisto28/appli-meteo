@@ -21,7 +21,7 @@
         <span id='time' style="background-color:#64a8c700;color:rgb(0, 0, 0);font-size:20px; font-weight: 800;" ></span>
        
         <div class="choice">
-          <input type="text" class="choiceCity" placeholder="Saisir une ville" />
+          <input type="text" class="choiceCity" placeholder="Saisir une ville" onFocus="javascript:this.value=''" />
         </div>
        
 
@@ -30,14 +30,15 @@
     <div id="myModal" class="modal fade">
 
         <div class="modal-content">
-          <span class="close" style="color: crimson;">&times;</span>
-            <div class="bloc-info3">
-              <p class="ChoiceCity"></p>
-              <p class="tempCity"></p>
-              <p class="ciel"></p> 
-              <span class="hours"></span>
+          <span class="close" style="color: crimson;">&olarr;</span>
+            <ul class="bloc-info3">
+              <li class="ChoiceCity"> Ville : </li>
+              <li class="pays" style="color: rgb(126, 110, 110);">Pays : </li>
+              <li class="tempCities"> T° : </li>
+              <li class="ciel" style="color: rgb(126, 110, 110);">tendance : </li> 
+              <li class="hours">heure locale : </li>
    
-            </div>
+            </ul>
             <img src="" alt="logo du temps" class="logo-image1" />
         </div>
 
