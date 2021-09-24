@@ -160,7 +160,7 @@ let callCity = function (city) {
             if (m < 10) { m = '0' + m; }
             if (s < 10) { s = '0' + s; }
             let times = data2.timezone / 3600 - 2;
-            let time2 = `${h + times}:${m}:${s}`;
+            let time2 =  (h + times ) < 24 ? `${h + times}:${m}:${s}` : `0${h + times - 24}:${m}:${s}`;
             console.log('time2', time2);
 
             document.querySelector('.hours').textContent = `Heure locale : ${time2}`;
@@ -169,13 +169,13 @@ let callCity = function (city) {
 
 
 };
+// create alert error saisi ville
+
 
 document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
     let ville = document.querySelector('.choiceCity').value || 'Paris';
-       // if(ville != `${data2.name}`){{
-            //     return alert('Veuillez entrer une ville valide');
-            // }}
+      
     
     callCity(ville);
 });
